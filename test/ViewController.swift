@@ -8,29 +8,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let mySwith = UISwitch()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
     @IBAction func showButton(_ sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Alert", message: "Achtung!", preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: "ok", style: .default) { (action) in
-//            let text = alertController.textFields?.first?.text
-//            print(text ?? "nil text")
-        }
-        
-//        alertController.addTextField()
-        alertController.addAction(action)
-        self.present(alertController, animated: true )
-        
+        self.alert(title: "Alert", message: "Hello! This is Error!", style: .alert)
     }
     
     
-    //MARK: -
+    //MARK: - 2
     
+    func alert(title: String, message: String, style: UIAlertController.Style) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        let action = UIAlertAction(title: "ok", style: .default) { (action) in
+            let text = alertController.textFields?.first?.text
+            print(text ?? "nil text")
+        }
+        
+        alertController.addTextField()
+        alertController.addAction(action)
+        self.present(alertController, animated: true )
+    }
     
 }
 
