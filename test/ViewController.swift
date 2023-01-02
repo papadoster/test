@@ -9,21 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let mySwith = UISwitch()
+    let mySwitch = UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //CreateSwitch
+        self.mySwitch.frame = CGRect(x: 20, y: 120, width: 0, height: 0)
+        self.view.addSubview(self.mySwitch)
+        //        self.mySwitch.thumbTintColor = UIColor.darkGray
+        self.mySwitch.onTintColor = UIColor.systemYellow
+        self.mySwitch.addTarget(self, action: #selector(switchChanged(parametrTarget:)), for: .valueChanged)
         
     }
-
+    
+    @objc func switchChanged(parametrTarget: UISwitch) {
+        if parametrTarget.isOn {
+            print("switch is on")
+        } else {
+            print("switch is off")
+        }
+    }
+    
     @IBAction func showButton(_ sender: UIButton) {
         self.alert(title: "Alert", message: "Hello! This is Error!", style: .alert)
     }
     
-    
-    //MARK: - 2
-    
+    //AlertFunc
     func alert(title: String, message: String, style: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         let action = UIAlertAction(title: "ok", style: .default) { (action) in
